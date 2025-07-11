@@ -1,0 +1,52 @@
+Algorithme SommeElementsDistincts
+    Constante MAX = 100
+    Variable ensemble1[MAX], ensemble2[MAX], n1, n2, i, j, trouve, somme : entier
+
+    // Saisie des ensembles
+    Ecrire("Entrez le nombre d'éléments de l'ensemble 1 : ")
+    Lire(n1)
+    Ecrire("Entrez les éléments de l'ensemble 1 : ")
+    Pour i ← 0 à n1 - 1 faire
+        Lire(ensemble1[i])
+    FinPour
+
+    Ecrire("Entrez le nombre d'éléments de l'ensemble 2 : ")
+    Lire(n2)
+    Ecrire("Entrez les éléments de l'ensemble 2 : ")
+    Pour i ← 0 à n2 - 1 faire
+        Lire(ensemble2[i])
+    FinPour
+
+    somme ← 0
+
+    // Vérification des éléments de l'ensemble 1 absents dans ensemble 2
+    Pour i ← 0 à n1 - 1 faire
+        trouve ← 0
+        Pour j ← 0 à n2 - 1 faire
+            Si ensemble1[i] = ensemble2[j] Alors
+                trouve ← 1
+                Break
+            FinSi
+        FinPour
+        Si trouve = 0 Alors
+            somme ← somme + ensemble1[i]
+        FinSi
+    FinPour
+
+    // Vérification des éléments de l'ensemble 2 absents dans ensemble 1
+    Pour i ← 0 à n2 - 1 faire
+        trouve ← 0
+        Pour j ← 0 à n1 - 1 faire
+            Si ensemble2[i] = ensemble1[j] Alors
+                trouve ← 1
+                Break
+            FinSi
+        FinPour
+        Si trouve = 0 Alors
+            somme ← somme + ensemble2[i]
+        FinSi
+    FinPour
+
+    Ecrire("Somme des éléments distincts : ", somme)
+
+FinAlgorithme

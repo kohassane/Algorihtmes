@@ -1,0 +1,43 @@
+Algorithme VecteursOrthogonaux_Procedure
+    Constante MAX_DIM = 100
+    Constante NB_VECTEURS = 5
+
+    Procédure dot_product(v1[], v2[], dim : entier, ps : référence entier)
+        Variable i : entier
+        ps ← 0
+        Pour i ← 0 à dim - 1 faire
+            ps ← ps + v1[i] * v2[i]
+        FinPour
+    FinProcédure
+
+    Variable i, dim, j : entier
+    Variable v1[NB_VECTEURS][MAX_DIM], v2[NB_VECTEURS][MAX_DIM] : tableau d'entiers
+    Variable ps : entier
+
+    // Saisie des dimensions
+    Ecrire("Entrez la dimension des vecteurs : ")
+    Lire(dim)
+
+    // Saisie des vecteurs
+    Pour i ← 0 à NB_VECTEURS - 1 faire
+        Ecrire("Vecteur 1 de la paire ", i+1, " : ")
+        Pour j ← 0 à dim - 1 faire
+            Lire(v1[i][j])
+        FinPour
+        Ecrire("Vecteur 2 de la paire ", i+1, " : ")
+        Pour j ← 0 à dim - 1 faire
+            Lire(v2[i][j])
+        FinPour
+    FinPour
+
+    // Calcul et test d'orthogonalité
+    Pour i ← 0 à NB_VECTEURS - 1 faire
+        dot_product(v1[i], v2[i], dim, ps)
+        Si ps = 0 Alors
+            Ecrire("Les vecteurs ", i+1, " sont orthogonaux.")
+        Sinon
+            Ecrire("Les vecteurs ", i+1, " ne sont pas orthogonaux.")
+        FinSi
+    FinPour
+
+FinAlgorithme
